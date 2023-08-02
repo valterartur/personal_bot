@@ -1,0 +1,84 @@
+[
+  {
+    "model": "gpt3-5",
+    "display_name": "GPT-3",
+    "types": [
+      {
+        "type": "4K",
+        "price": 0.0000015,
+        "input_type": "prompt"
+      },
+      {
+        "type": "4K",
+        "price": 0.000002,
+        "input_type": "completion"
+      },
+      {
+        "type": "16K",
+        "price": 0.000003,
+        "input_type": "prompt"
+      },
+      {
+        "type": "16K",
+        "price": 0.000004,
+        "input_type": "completion"
+      }
+    ]
+  },
+  {
+    "model": "gpt4",
+    "display_name": "GPT-4",
+    "types": [
+      {
+        "type": "8K",
+        "price": 0.00003,
+        "input_type": "prompt"
+      },
+      {
+        "type": "8K",
+        "price": 0.00006,
+        "input_type": "completion"
+      },
+      {
+        "type": "32K",
+        "price": 0.00006,
+        "input_type": "prompt"
+      },
+      {
+        "type": "32K",
+        "price": 0.00012,
+        "input_type": "completion"
+      }
+    ]
+  },
+  {
+    "model": "image",
+    "display_name": "Image",
+    "types": [
+      {
+        "type": "256x256",
+        "price": 0.016,
+        "input_type": null
+      },
+      {
+        "type": "512x512",
+        "price": 0.018,
+        "input_type": null
+      },
+      {
+        "type": "1024x1024",
+        "price": 0.02,
+        "input_type": null
+      }
+    ]
+  },
+  {
+    "model": "whisper",
+    "display_name": "Audio",
+    "types": [{
+      "type": "1 minute",
+      "price": 0.006,
+      "input_type": null
+    }]
+  }
+]
