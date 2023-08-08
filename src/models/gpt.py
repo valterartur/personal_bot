@@ -48,6 +48,7 @@ class GPTAudit(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     model_id = Column(Integer, ForeignKey(f'{Constants.GPT_MODEL_TABLE}.id'))
     conversation_id = Column(Integer, ForeignKey(f'{Constants.GPT_CONVERSATION_TABLE}.id'))
+    role = Column(String, nullable=True)
     prompt = Column(String, nullable=True)
     response = Column(String, nullable=True)
     billing = Column(Float)
@@ -70,9 +71,17 @@ class GPTModel(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     model = Column(String)
     display_name = Column(String)
-    model_type = Column(String)
-    input_type = Column(String)
-    cost = Column(Float)
+    model_type = Column(String, nullable=True)
+    input_cost = Column(Float, nullable=True)
+    output_cost = Column(Float, nullable=True)
+    
+    @property
+    def model_full(self) -> str:
+        model_full = self.model
+        if self.model_type:
+            model_full += f'-{self.model_type}'
+        return model_full.lower()
+
 
 
 

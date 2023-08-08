@@ -118,11 +118,22 @@ def store_image(context, update, url: str):
     return image_path
 
 
-def get_model(context, model: str, type: str, input_type: str = None) -> GPTModel:
+def get_model(context, model: str, type: str) -> GPTModel:
     model_repo = Repository(GPTModel, context.user_data['session'])
     orm_model = model_repo.get(model=model, model_type=type, input_type=input_type)
     if not orm_model:
         raise Exception(f"Model {model} not found.")
     return orm_model
 
+
+def bill_completion(context, model: GPTModel, input_tokens: int, output_tokens: int) -> float:
+    return model.input_cost * input_tokens + model.output_cost * output_tokens
+
+
+def create_completation(context, model: GPTModel, body):
+    user = context.user_data['orm_user']
+    openai = OpenAI(user.gpt_token.token)
+    response = openai.create_completation(model=model, body=body)
+    return response
+    
 
